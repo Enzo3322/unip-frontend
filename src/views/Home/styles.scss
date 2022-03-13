@@ -1,0 +1,76 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+:root {
+	--text-color: #e6dddd;
+	--bg-color: #ffffff;
+}
+
+#root {
+	height: 100%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif !important;
+}
+
+html,
+body {
+	background: var(--bg-color);
+	color: var(--text-color);
+	height: 100vh;
+}
+
+#hero {
+	display: flex;
+	height: 100%;
+	@media (max-width: 40em) {
+		flex-direction: column;
+
+		.left {
+			height: 30% !important;
+		}
+		.right {
+			margin-top: 40px;
+		}
+	}
+	.left {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		padding: 20px;
+		align-items: center;
+		background-color: #075ebd;
+		h1 {
+			color: #fbfbfb;
+			font-size: 2.2rem;
+		}
+	}
+	.right {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.form-container {
+			display: flex;
+			flex-direction: column;
+			padding: 30px;
+			justify-content: center;
+			align-items: center;
+
+			.submit {
+				margin-top: 30px;
+			}
+			.search-campus {
+				border: none !important;
+				margin: 20px 0;
+			}
+			.claims {
+				outline: 0 !important;
+			}
+		}
+	}
+}
