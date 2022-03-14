@@ -1,17 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './styles.scss';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 
-import campus from './campus.json';
+import campusData from './campus.json';
 
 function Home() {
 	const [name, setName] = useState('');
 	const [option, setOption] = useState('');
 	const [coordinator, setCoordinator] = useState('');
 	const [description, setDescription] = useState('');
+
+	const campusMap = campusData.map((campus) => {
+		return campus.campus;
+	});
 
 	const submitData = () => {
 		console.log(name);
@@ -38,7 +42,7 @@ function Home() {
 					<Autocomplete
 						disablePortal
 						className="search-campus"
-						options={campus}
+						options={campusMap}
 						sx={{ width: 300 }}
 						renderInput={(params) => <TextField {...params} label="Campus" />}
 						onChange={(event) => setOption(event.target.innerText)}
