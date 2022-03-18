@@ -27,31 +27,49 @@ body {
 	height: 100%;
 	@media (max-width: 40em) {
 		flex-direction: column;
-
-		.left {
-			height: 30% !important;
-		}
 		.right {
 			margin-top: 40px;
 		}
 	}
+
+	nav {
+		position: absolute;
+		top: 0;
+		img {
+			margin-top: 20px;
+			width: 200px;
+		}
+	}
+
 	.left {
 		width: 100%;
 		height: 100%;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		padding: 20px;
 		align-items: center;
 		background-color: #075ebd;
+		@media (max-width: 40em) {
+			margin-top: 80px;
+		}
 		h1 {
 			color: #fbfbfb;
 			font-size: 2.2rem;
+			max-width: 600px;
+			line-height: 35px;
+			margin-bottom: 20px;
+		}
+		p {
+			max-width: 600px;
 		}
 	}
 	.right {
 		width: 100%;
 		display: flex;
 		justify-content: center;
+		background-color: #fbfbfb;
+
 		align-items: center;
 
 		.form-container {
