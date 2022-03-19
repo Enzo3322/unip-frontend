@@ -33,7 +33,7 @@ function Home() {
 
 	const submitData = () => {
 		if (campus && coordinator && description && priority) {
-			fetch('http://localhost:3333/claims', {
+			fetch('https://unip-back.herokuapp.com/claims', {
 				method: 'POST',
 				headers: {
 					Accept: 'application/json',
