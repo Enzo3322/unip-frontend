@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Alert from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
@@ -18,7 +18,7 @@ function Home() {
 	const [campus, setCampus] = useState('');
 	const [coordinator, setCoordinator] = useState('');
 	const [description, setDescription] = useState('');
-	const [scale, setScale] = useState('Baixa');
+	const [priority, setPriority] = useState('Baixa');
 	const [validated, setValidated] = useState(true);
 
 	const navigate = useNavigate();
@@ -28,38 +28,35 @@ function Home() {
 	});
 
 	const handleScale = (event) => {
-		setScale(event.target.value);
+		setPriority(event.target.value);
 	};
 
 	const submitData = () => {
-		if (campus && coordinator && description && scale) {
-			try {
-				fetch('http://locahost:3000/register', {
-					method: 'POST',
-					headers: {
-						Accept: 'application/json',
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						name,
-						email,
-						campus,
-						coordinator,
-						description,
-						scale,
-					}),
-				})
-					.then((response) => response.json())
-					.then((res) => {
-						console.log(res);
-						if (res.status === 'success') {
-							navigate('/reclamacao');
-						}
-					});
-			} catch (err) {
-				console.log(err);
-			}
+		if (campus && coordinator && description && priority) {
+			fetch('http://localhost:3333/claims', {
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					name,
+					email,
+					campus,
+					priority,
+					coordinator,
+					description,
+				}),
+			})
+				.then((response) => response.json())
+				.then((res) => {
+					console.log(res);
+					if (res._id) {
+						navigate('/reclamacao');
+					}
+				});
 		} else {
+			console.log({ campus, coordinator, description, priority });
 			setValidated(false);
 		}
 	};
@@ -113,7 +110,7 @@ function Home() {
 						labelId="demo-simple-select-helper-label"
 						id="demo-simple-select-helper"
 						renderInput={(params) => <TextField {...params} label="Escala" />}
-						value={scale}
+						value={priority}
 						onChange={handleScale}
 						style={{ marginBottom: '20px', width: 300 }}
 					>
