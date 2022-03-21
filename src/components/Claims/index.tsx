@@ -19,7 +19,7 @@ const ClaimsGrid: React.FC<ClaimProps> = ({ data, loading }) => (
 								<b>Id:</b> {e._id}
 							</p>
 							<p>
-								<b>Time:</b> {e.created_at}
+								<b>Time:</b> {new Date(e.created_at).toLocaleString('pt')}
 							</p>
 							<p>
 								<b>Campus:</b> {e.campus}
